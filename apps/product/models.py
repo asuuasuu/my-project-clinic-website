@@ -27,6 +27,7 @@ class Product(models.Model):
       updated_at = models.DateTimeField(auto_now = True)
       ingredients = models.TextField(blank = False, default='')
       slug = models.CharField(max_length = 100, unique = True, blank = True)
+      quantity = models.PositiveIntegerField(default = 0)
 
       def save(self, *args, **kwargs):
             if not self.slug:
@@ -35,6 +36,7 @@ class Product(models.Model):
 
       def __str__(self):
           return self.name
+
 
 class ProductImage(models.Model):
       product = models.ForeignKey(Product, blank = False, on_delete = models.CASCADE)
