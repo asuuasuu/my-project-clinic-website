@@ -16,9 +16,11 @@
       {% include "includes/header.html" %}
 
       <main>
-            {% block content%}
-                  <a href="{% url "index" %}">Головна</a>
-            {% endblock %}
+            {{%for categories in Category%}}      
+                  {% block content%}
+                        <a href="{% url "index" %}">{{category.name}}</a>
+                  {% endblock %}
+              {% endfor %}
       </main>
 
             <!--footer-->
